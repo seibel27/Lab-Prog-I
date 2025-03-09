@@ -32,10 +32,35 @@ Entregar arquivo (mínimo de 3 ninjas, missões e alocações)
 #include <stdio.h>
 #include <stdlib.h>
 
+//Criando as estruturas no escopo global
+typedef enum {D,C,B,A,S} Rank;
+typedef enum {SemPatente, Genin, Chunin, Jonin} Patente;
+char *rankNomes[] = {"D", "C", "B", "A", "S"};
+char *patenteNomes[] = {"Sem Patente", "Genin", "Chunin", "Jonin"};
 
+
+typedef struct ninjaStruct{
+    int codigo; //5 dígitos
+    char *nome;
+    Patente patente;
+
+} Ninja;
+
+typedef struct missaoStruct{
+    short int codigo; //4 dígitos
+    char *nome;
+    Rank rank;
+    unsigned int recompensa;
+    short unsigned int ano;
+    ///Lista de ninjas envolvidos
+
+} Missao;
 
 int main()
 {
-    printf("Hello world!\n");
+    ///Testando
+    Rank rank = A;
+    Patente patente = 3;
+    printf("Rank do ninja: %s\nPatente do ninja: %s", rankNomes[rank], patenteNomes[patente]);
     return 0;
 }
