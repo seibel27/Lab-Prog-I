@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1741549994 source:c:\users\jpsei\onedrive\documentos\codeblocks\trabalho lab prog revisao c\narutogerenciamento\main.c
+1741923933 source:c:\users\jpsei\onedrive\documentos\codeblocks\trabalho lab prog revisao c\narutogerenciamento\main.c
 	<stdio.h>
 	<stdlib.h>
+	<locale.h>
 
