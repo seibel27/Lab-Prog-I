@@ -60,11 +60,13 @@ typedef struct missaoStruct{
 } Missao;
 
 void mensagemInicial();
+void printKonohaSymbol();
 
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
     mensagemInicial();
+    //printKonohaSymbol();
 
     ///Verificar se há um arquivo?
     ///Criar ou abrir arquivo (trataremos tudo em binário)
@@ -75,7 +77,7 @@ int main()
 
     ///Rodar o sistema
         ///Apresentação do menu()
-            //Opções do menu()
+            ///Opções do menu()
             ///Printar todos os ninjas cadastrados
             ///Printar todas as missões cadastradas
             ///Adicionar ou remover um ninja
@@ -106,9 +108,10 @@ void mensagemInicial(){
         printf("#");
     }
 
-    printf("\n\n\t\t\tSEJA BEM-VINDO AO SISTEMA GERAL DE REGISTRO DA ALIANÇA SHINOBI\n\n");
-    printf("\n\n\n\t   APÓS A 4ª GRANDE GUERRA NINJA, AS ALDEIAS NINJA ENCONTRARAM A PAZ E PERCEBERAM QUE TINHAM\t\n\tMUITO A GANHAR TRABALHANDO DE FORMA CONJUNTA, O QUE RESULTOU NA CRIAÇÃO DESTE SISTEMA UNIFICADO\t\n\n");
-    printf("\n\n\n\n\nVersão 1.0\tMente Criativa: Jiraya\tMente Operacional: Shikamaru\tResponsável pelos bugs: Obito\n");
+    printf("\n\n\t\t\tSEJA BEM-VINDO AO SISTEMA GERAL DE REGISTRO DE KONOHA\n\n");
+    printf("\n\n\n\t   A PEDIDO DE KAKASHI E JIRAYA PARA SHIKAMARU, ESTE SISTEMA FOI CRIADO\t\n\tA FIM DE MELHOR CONTROLE DE SHINOBIS DA FOLHA, SHINOBIS ALIADOS E SHINOBIS INIMIGOS\t\n\n");
+    printf("\n\n\n\n\nVersão 1.0    ->Mente Criativa: Jiraya    ->Mente Operacional: Shikamaru    ->Responsável pelos bugs: Obito\n");
+    printf("Versão criada, gerida e distribuída pela Vila Secreta da Aldeia da Folha.\nCopyright © 2025 Naruto.  Todos os direitos reservados.\n");
 
     for(int j=0;j<110;j++){
         printf("#");
@@ -116,3 +119,37 @@ void mensagemInicial(){
     printf("\n\n");
     return;
 }
+
+
+void printKonohaSymbol() {
+    printf("                              \n");
+    printf("                              \n");
+    printf("                              \n");
+    printf("             ########       ##\n");
+    printf("           ####    ####   ### \n");
+    printf("         ###          ######  \n");
+    printf("        ##              ##    \n");
+    printf("       ##                     \n");
+    printf("      ##     ######           \n");
+    printf("      #    ####  ####         \n");
+    printf("     ##   ##        ##        \n");
+    printf("     ##   #          ##       \n");
+    printf("     #   ##    ###    ##      \n");
+    printf("    ##   ##      ##    #      \n");
+    printf("    ##    #       ##   ##     \n");
+    printf("    ##    ##      ##   ##     \n");
+    printf("   ####    ##    ##    ##     \n");
+    printf("   # ##     ######     ##     \n");
+    printf("  ##  ##               ##     \n");
+    printf("  #   ##              ##      \n");
+    printf(" ##    ###           ##       \n");
+    printf("############      ####        \n");
+    printf("####################          \n");
+    printf("                              \n");
+    printf("                              \n");
+    printf("                              \n");
+    printf("                              \n");
+    return;
+}
+
+
