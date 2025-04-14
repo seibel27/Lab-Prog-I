@@ -40,6 +40,8 @@ typedef enum {Fogo, Vento, Raio, Terra, Agua} Natureza; //Fogo, Vento, Raio, Ter
 char *rankNomes[] = {"D", "C", "B", "A", "S"};
 char *patenteNomes[] = {"Sem Patente", "Genin", "Chunin", "Jonin"};
 char *naturezaNomes[] = {"Katon", "Fuuton", "Raiton", "Doton", "Suiton"};
+///Estatísticas de habilidades
+    ///Ninjutsu, Força, Taijutsu, Velocidade, Genjutsu, Estamina, Inteligência, Selos
 
 
 typedef struct ninjaStruct{
@@ -53,7 +55,7 @@ typedef struct missaoStruct{
     short int codigo; //4 dígitos
     char *nome;
     Rank rank;
-    unsigned int recompensa;
+    unsigned int recompensa; //Referência por rank: D, 5mil; C, 30 a 100mil; B, 150 a 200mil; A, 150mil a 1milhão; S, 1 milhão acima
     short unsigned int ano;
     ///Lista de ninjas envolvidos
 
@@ -61,6 +63,13 @@ typedef struct missaoStruct{
 
 void mensagemInicial();
 void printKonohaSymbol();
+char *getTexto();
+// Tipo criarNinja
+// alguma coisa com missao
+// validarCodigo
+// busca
+// inserção
+// remoção
 
 int main()
 {
@@ -107,10 +116,9 @@ void mensagemInicial(){
     for(int i=0;i<110;i++){
         printf("#");
     }
-
     printf("\n\n\t\t\tSEJA BEM-VINDO AO SISTEMA GERAL DE REGISTRO DE KONOHA\n\n");
     printf("\n\n\n\t   A PEDIDO DE KAKASHI E JIRAYA PARA SHIKAMARU, ESTE SISTEMA FOI CRIADO\t\n\tA FIM DE MELHOR CONTROLE DE SHINOBIS DA FOLHA, SHINOBIS ALIADOS E SHINOBIS INIMIGOS\t\n\n");
-    printf("\n\n\n\n\nVersão 1.0    ->Mente Criativa: Jiraya    ->Mente Operacional: Shikamaru    ->Responsável pelos bugs: Obito\n");
+    printf("\n\n\n\n\nVersão 1.0    ->Mente Criativa: Jiraiya    ->Mente Operacional: Shikamaru    ->Responsável pelos bugs: Obito\n");
     printf("Versão criada, gerida e distribuída pela Vila Secreta da Aldeia da Folha.\nCopyright © 2025 Naruto.  Todos os direitos reservados.\n");
 
     for(int j=0;j<110;j++){
