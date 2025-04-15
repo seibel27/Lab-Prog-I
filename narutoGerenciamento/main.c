@@ -334,8 +334,8 @@ void exibirPerfilNinja(Sistema *sistema, int codigo) {
     }
     if (!temNatureza) printf("Nenhuma");
     printf("\n");
-
-    printf("\n>>> Habilidades\n");
+    float totalHabilidades = desc->habilidades.ninjutsu + desc->habilidades.forca + desc->habilidades.taijutsu + desc->habilidades.velocidade + desc->habilidades.genjutsu + desc->habilidades.estamina + desc->habilidades.inteligencia + desc->habilidades.selos;
+    printf("\n>>> Habilidades (%.1f)\n", totalHabilidades);
     printf("Ninjutsu: %.1f\n", desc->habilidades.ninjutsu);
     printf("Força: %.1f\n", desc->habilidades.forca);
     printf("Taijutsu: %.1f\n", desc->habilidades.taijutsu);
