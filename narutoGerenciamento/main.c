@@ -1,3 +1,9 @@
+
+///Trabalho Lab Prog I
+///Seibel 23406 Fabiano 22073
+///Estamos enviando um arquivo de exemplo com ninjas cadastrados, pode ser usado pra teste e visualização em cima dele ou pode ser apagado e utilizado apenas o arquivo .c
+
+
 /*
 Trabalho prático da revisão – v3
 
@@ -36,11 +42,18 @@ Entregar arquivo (mínimo de 3 ninjas, missões e alocações)
 
 //Criando as estruturas no escopo global
 typedef enum {D,C,B,A,S} Rank;
-typedef enum {SemPatente, Genin, Chunin, Jonin} Patente;
-typedef enum {Fogo, Vento, Raio, Terra, Agua} Natureza; //Fogo, Vento, Raio, Terra, Água
+typedef enum {SemPatente, Gennin, Chunnin, Jonnin} Patente;
+typedef enum {Fogo, Vento, Raio, Terra, Agua} Natureza;
 char *rankNomes[] = {"D", "C", "B", "A", "S"};
-char *patenteNomes[] = {"Sem Patente", "Genin", "Chunin", "Jonin"};
-char *naturezaNomes[] = {"Katon", "Fuuton", "Raiton", "Doton", "Suiton"};
+char *patenteNomes[] = {"Sem Patente", "Gennin", "Chunnin", "Jonnin"};
+char *naturezaNomes[] = {"Katon", "Fuuton", "Raiton", "Doton", "Suiton"}; //Fogo, Vento, Raio, Terra, Água
+char *coresNatureza[] = {
+    "\033[1;31m", // Katon (vermelho)
+    "\033[1;36m", // Fuuton (ciano)
+    "\033[1;33m", // Raiton (amarelo)
+    "\033[0;32m", // Doton (verde)
+    "\033[0;34m"  // Suiton (azul)
+};
 
 typedef struct {
     float ninjutsu, forca, taijutsu, velocidade, genjutsu, estamina, inteligencia, selos;
@@ -120,51 +133,9 @@ void salvarSistema(Sistema *sistema, const char *nomeArquivo);
 void carregarSistema(Sistema *sistema, const char *nomeArquivo);
 void liberarSistema(Sistema *sistema);
 void menu(Sistema *s);
-// alguma coisa com missao
-// validarCodigo
-// busca
-// inserção
-// remoção
-
-/* int main()
-{
-    setlocale(LC_ALL, "Portuguese");
-    mensagemInicial();
-    //printKonohaSymbol();
-
-    ///Verificar se há um arquivo?
-    ///Criar ou abrir arquivo (trataremos tudo em binário)
-
-    ///Ler arquivo
-    ///Puxar informações
-    ///Fechar arquivo
-
-    ///Rodar o sistema
-        ///Apresentação do menu()
-            ///Opções do menu()
-            ///Printar todos os ninjas cadastrados
-            ///Printar todas as missões cadastradas
-            ///Adicionar ou remover um ninja
-            ///Adicionar ou remover uma missão
-            ///Editar um ninja......?
-            ///Editar uma missão....?
-            ///Printar um ninja - perfil completo
-
-    ///No caso de salvamento
-        ///Abrir o arquivo
-        ///Realizar alteração
-        ///Fechar arquivo
-
-    ///No caso de finalizar sessão no sistema
-        ///Liberar as memórias alocadas
 
 
-    Rank rank = A;
-    Patente patente = 3;
-    printf("Rank do ninja: %s\nPatente do ninja: %s", rankNomes[rank], patenteNomes[patente]);
-    return 0;
-}
-*/
+
 int main() {
     setlocale(LC_ALL, "Portuguese");
     mensagemInicial();
@@ -186,8 +157,8 @@ void mensagemInicial(){
         printf("#");
     }
     printf("\n\n\t\t\tSEJA BEM-VINDO AO SISTEMA GERAL DE REGISTRO DE KONOHA\n\n");
-    printf("\n\n\n\t   A PEDIDO DE KAKASHI E JIRAYA PARA SHIKAMARU, ESTE SISTEMA FOI CRIADO\t\n\tA FIM DE MELHOR CONTROLE DE SHINOBIS DA FOLHA, SHINOBIS ALIADOS E SHINOBIS INIMIGOS\t\n\n");
-    printf("\n\n\n\n\nVersão 1.0    ->Mente Criativa: Jiraiya    ->Mente Operacional: Shikamaru    ->Responsável pelos bugs: Obito\n");
+    printf("\n\n\n\t   A PEDIDO DE KAKASHI E JIRAIYA PARA SHIKAMARU, ESTE SISTEMA FOI CRIADO\t\n\tA FIM DE MELHOR CONTROLE DE SHINOBIS DA FOLHA, SHINOBIS ALIADOS E SHINOBIS INIMIGOS\t\n\n");
+    printf("\n\n\n\n\nVersão 1.0    ->Mente Criativa: Jiraiya    ->Mente Operacional: Shikamaru    ->Responsável pelos bugs: Zetsu Negro\n");
     printf("Versão criada, gerida e distribuída pela Vila Secreta da Aldeia da Folha.\nCopyright © 2025 Naruto.  Todos os direitos reservados.\n");
 
     for(int j=0;j<110;j++){
@@ -236,10 +207,12 @@ DescricaoCompleta *criarDescricaoPersonalizada() {
     d->invocacao = getTexto();
 
     printf("Selecione as naturezas dominadas (0 ou 1 para cada):\n");
+
     for (int i = 0; i < 5; i++) {
-        printf("Domina %s? (0 = não, 1 = sim): ", naturezaNomes[i]);
+        printf("Domina %s%s\033[0m? (0 = não, 1 = sim): ", coresNatureza[i], naturezaNomes[i]);
         scanf("%d", &d->naturezas[i]);
     }
+
 
     printf("Agora, defina as estatísticas do ninja (0,0 a 5,0):\nUtilize vírgula para a casa decimal.\n");
     printf("Ninjutsu: ");       scanf("%f", &d->habilidades.ninjutsu);
@@ -276,7 +249,7 @@ Ninja *criarNinja(Sistema *sistema) {
     printf("Nome do ninja: ");
     novo->nome = getTexto();
 
-    printf("Patente (0: Sem Patente, 1: Genin, 2: Chunin, 3: Jonin): ");
+    printf("Patente (0: Sem Patente, 1: Gennin, 2: Chunnin, 3: Jonnin): ");
     int pat;
     scanf("%d", &pat);
     novo->patente = (Patente)pat;
@@ -326,12 +299,15 @@ void exibirPerfilNinja(Sistema *sistema, int codigo) {
 
     printf("Naturezas dominadas: ");
     int temNatureza = 0;
+
+
     for (int i = 0; i < 5; i++) {
         if (desc->naturezas[i]) {
-            printf("%s ", naturezaNomes[i]);
+            printf("%s%s\033[0m ", coresNatureza[i], naturezaNomes[i]);
             temNatureza = 1;
         }
     }
+
     if (!temNatureza) printf("Nenhuma");
     printf("\n");
     float totalHabilidades = desc->habilidades.ninjutsu + desc->habilidades.forca + desc->habilidades.taijutsu + desc->habilidades.velocidade + desc->habilidades.genjutsu + desc->habilidades.estamina + desc->habilidades.inteligencia + desc->habilidades.selos;
